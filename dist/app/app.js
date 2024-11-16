@@ -9,11 +9,15 @@ const app = (0, express_1.default)();
 const port = 3000;
 // use percher
 app.use(express_1.default.json());
+app.use(express_1.default.text());
 app.get('/', (req, res) => {
     res.send('Hello developer!');
 });
 app.post('/', (req, res) => {
     console.log(req.body);
-    res.send("got data");
+    // res.send("got data")
+    res.json({
+        message: "successfully received data"
+    });
 });
 exports.default = app;
