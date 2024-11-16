@@ -10,6 +10,30 @@ const port = 3000;
 // use parsers
 app.use(express_1.default.json());
 app.use(express_1.default.text());
+//Routing in expressJS
+const userRouter = express_1.default.Router();
+const jobRouter = express_1.default.Router();
+app.use("/api/v1/jobs", jobRouter);
+app.use("/api/v1/users", userRouter);
+userRouter.post("/create-user", (req, res) => {
+    const user = req.body;
+    console.log(user);
+    res.json({
+        success: true,
+        message: "User is created successfully",
+        data: user,
+    });
+});
+jobRouter.post('/create-job', (req, res) => {
+    const job = req.body;
+    console.log(job);
+    res.json({
+        success: true,
+        message: "Job is created successfully",
+        data: job
+    });
+});
+//Middleware in express.js
 const logger = (req, res, next) => {
     console.log(req.url, req.method, req.hostname);
     next();

@@ -1,3 +1,4 @@
+import exp from 'constants';
 import express, { NextFunction, Request, Response } from 'express'
 // const express = require('express')
 const app = express();
@@ -6,7 +7,30 @@ const port = 3000;
 // use parsers
 app.use(express.json());
 app.use(express.text());
-
+//Routing in expressJS
+const userRouter = express.Router();
+const jobRouter = express.Router();
+app.use("/api/v1/jobs",jobRouter)
+app.use("/api/v1/users",userRouter);
+userRouter.post("/create-user", (req:Request, res: Response)=>{
+  const user = req.body;
+  console.log(user);
+  res.json({
+    success: true,
+    message: "User is created successfully",
+    data: user,
+  })
+})
+jobRouter.post('/create-job', (req:Request, res:Response)=>{
+  const job = req.body;
+  console.log(job);
+  res.json({
+    success: true,
+    message: "Job is created successfully",
+    data: job
+  })
+})
+//Middleware in express.js
 const logger = (req:Request, res:Response, next: NextFunction)=>{
   console.log(req.url, req.method, req.hostname);
   next();
