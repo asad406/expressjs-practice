@@ -7,7 +7,13 @@ const express_1 = __importDefault(require("express"));
 // const express = require('express')
 const app = (0, express_1.default)();
 const port = 3000;
+// use percher
+app.use(express_1.default.json());
 app.get('/', (req, res) => {
     res.send('Hello developer!');
+});
+app.post('/', (req, res) => {
+    console.log(req.body);
+    res.send("got data");
 });
 exports.default = app;
