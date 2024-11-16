@@ -24,6 +24,7 @@ userRouter.post("/create-user", (req, res) => {
         data: user,
     });
 });
+//http://localhost:5000/api/v1/jobs/create-job
 jobRouter.post('/create-job', (req, res) => {
     const job = req.body;
     console.log(job);
