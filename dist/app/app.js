@@ -7,10 +7,21 @@ const express_1 = __importDefault(require("express"));
 // const express = require('express')
 const app = (0, express_1.default)();
 const port = 3000;
-// use percher
+// use persers
 app.use(express_1.default.json());
 app.use(express_1.default.text());
-app.get('/', (req, res) => {
+/*
+//for params
+//http://localhost:5000/56/72
+app.get("/:userId/:subId", (req: Request, res: Response) => {
+  console.log(req.params);
+  res.send('Hello developer!')
+})
+*/
+//for Query
+//http://localhost:5000?email=a@a.com&name=asad
+app.get("/", (req, res) => {
+    console.log(req.query);
     res.send('Hello developer!');
 });
 app.post('/', (req, res) => {
